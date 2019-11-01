@@ -80,14 +80,14 @@ public class Solution {
         });
 
         Collection<CatalogEntry> regionRyazanCatalog = Utils.filter(catalog,
-                catalogEntry -> catalogEntry.getRegion().equals("Рязанская область") );
+                catalogEntry -> "Рязанская область".equals(catalogEntry.getRegion()) );
 
         int pensioners = Utils.count(regionRyazanCatalog, catalogEntry -> catalogEntry.getPerson().getAge() >= 70 );
 
         Collection<CatalogEntry> cityRyazanCatalog = Utils.filter(regionRyazanCatalog,
-                catalogEntry -> catalogEntry.getCity().equals("Рязань") );
+                catalogEntry -> "Рязань".equals(catalogEntry.getCity()) );
 
-        boolean hasFasionDesigners = Utils.contains(persons, person -> person.getProfession().equals("Модельер"));
+        boolean hasFasionDesigners = Utils.contains(persons, person -> "Модельер".equals(person.getProfession()));
 
         return new Result(regionRyazanCatalog.size(),cityRyazanCatalog.size(),pensioners,hasFasionDesigners);
     }
